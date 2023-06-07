@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const https = require("https");
-
+require('dotenv').config();
+//console.log(process.env);
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -16,7 +17,7 @@ app.get("/", function (req, res) {
 app.post("/",function(req,res){
   console.log(req.body.cityName);
   const query = req.body.cityName;
-const apikey = "d2dfedead404d28131c1d847dfd7b5ad";
+const apikey = process.env.API_KEY;
 const unit = "metric";
 
   const url =
